@@ -1,5 +1,4 @@
 // scan.js - Handle policy scan page
-
 document.getElementById('policyForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);

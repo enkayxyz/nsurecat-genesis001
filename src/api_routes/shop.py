@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from src.agent.mock_shopper import find_savings
+from agent.mock_shopper import find_savings
 
 router = APIRouter()
 
