@@ -1,53 +1,33 @@
-NsureCat: Hackathon MVP Requirements (v1)
-Purpose: This document defines the high-level functional requirements and "must-haves" for the NsureCat hackathon submission.
-Hackathon MVP Flowchart
-This diagram outlines the complete user journey for our "working prototype."
-graph TD
-    A[Start: User lands on scan.html] --> B{User Input Method?};
-    B -- Form --> C[User fills 'Key 6' form];
-    B -- Voice --> D[User clicks 'Call the Cat'];
-    D -- ElevenLabs/Speech-to-Text --> C;
-    C --> E[User clicks 'Find My Savings'];
-    E --> F[FE calls 'POST /v1/shop'];
-    F --> G[BE: AI Agent runs<br/>(Simulated 2-sec shop)];
-    G --> H[BE: Agent returns JSON savings];
-    H --> I[FE: Show results.html<br/>'You Save: $246 for 6 months!'];
-    I --> J{User clicks 'Save Now'};
-    J --> K[FE: Display '2-Step Checkout'<br/>1. Create/Connect Wallet<br/>2. Fund & Pay];
-    K --> L{User choice};
-    L -- Create --> M[FE: User creates wallet via<br/>Circle Wallets SDK (e.g., Google Login)];
-    L -- Connect --> N[FE: User connects<br/>existing wallet (e.g., MetaMask)];
-    M --> O[FE: User funds new wallet via<br/>Arc Testnet Faucet];
-    N --> P[User clicks 'Confirm & Pay 10% Fee'];
-    O --> P;
-    P --> Q[FE calls 'POST /v1/save'];
-    Q --> R[BE: Calls real Arc Smart Contract];
-    R --> S[Arc Contract: Transfers Testnet USDC<br/>(e.g., 0.01 USDC) from User to NsureCat];
-    S --> T[BE: Returns 'success'];
-    T --> U[FE: Show 'Success!' page];
-    U --> V[FE: Display 'v2 Refund Hook' mockup on<br/>Success Page];
+# NsureCat Hackathon MVP
 
+A FastAPI backend with vanilla JavaScript frontend for insurance savings discovery.
 
-Core User Flow (The 3-Step Demo)
-The MVP will demonstrate the core NsureCat "3-Step Flow" to prove our value.
-Step 1: The "Policy Scan" (Input)
-A user lands on a simple page.
-The user is presented with three input options:
-A simple form for the "Key 6" values (e.g., Bodily Injury).
-A (mocked) "Upload Policy" button.
-A "Call the Cat" button that launches the ElevenLabs Voice Agent to fill the form.
-(Note: The exact "Key 6" fields to be defined by Product/Anushka).
-Step 2: The "Agent Shop" (Processing)
-The user clicks "Find My Savings."
-The system will simulate the NsureCat AI Agent shopping for "apples-to-apples" quotes (2-3 second delay).
-Step 3: The "Value & Checkout" (Output & Action)
-The user is directed to a results page and sees the savings upfront (e.g., "You Save: $246 for 6 months!").
-The user clicks "Save Now."
-The UI presents a "2-Step Checkout":
-Create/Connect Wallet: The user is given two options:
-Create: A new, seamless wallet via the Circle Wallets SDK.
-Connect: An existing wallet (e.g., MetaMask).
-Fund & Pay: The user (if they created a new wallet) is guided to the Arc Testnet Faucet to fund it, then confirms the 10% fee payment.
+## Architecture
+
+- **Backend**: FastAPI (Python) with Uvicorn server
+- **Frontend**: Static HTML/CSS/Vanilla JS served by Python http.server
+- **AI Agent**: Mocked shopping logic
+- **Blockchain**: Web3.py integration with Arc Testnet
+- **Environment**: Conda for Python environment management
+
+## Setup
+
+1. Run `./setup.sh` to create conda environment and install dependencies.
+2. Run `./start.sh` to start both backend (port 8000) and frontend (port 8001) servers.
+3. Open `http://localhost:8001/scan.html` in your browser.
+
+## Testing
+
+Run `./test.sh` to execute pytest tests.
+
+## Project Structure
+
+- `src/backend/`: FastAPI application
+- `src/frontend/`: Static web files
+- `src/api_routes/`: API endpoints
+- `src/agent/`: AI agent logic
+- `src/services/`: External service integrations
+- `tests/`: Unit tests
 Hackathon-Specific Requirements
 These are the non-negotiable features required to meet the hackathon's technical judging criteria.
 AI Agent (Must-Have):

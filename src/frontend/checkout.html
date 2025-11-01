@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NsureCat - Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Circle Wallets SDK -->
+    <script src="https://js.circle.com/v1/circle.js"></script>
+</head>
+<body>
+    <h1>2-Step Checkout</h1>
+    <div id="walletStep">
+        <h2>Step 1: Create or Connect Wallet</h2>
+        <button id="createWallet">Create New Wallet</button>
+        <button id="connectWallet">Connect Existing Wallet</button>
+    </div>
+    <div id="fundStep" style="display:none;">
+        <h2>Step 2: Fund & Pay</h2>
+        <p>If you created a new wallet, fund it via Arc Testnet Faucet.</p>
+        <button id="confirmPay">Confirm & Pay 10% Fee</button>
+    </div>
+    <script src="checkout.js"></script>
+</body>
+</html>
