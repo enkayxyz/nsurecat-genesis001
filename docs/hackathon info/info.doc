@@ -1,0 +1,441 @@
+
+AI Agents on Arc with USDC
+Build agentic payments onchain
+In this hybrid hackathon powered by Arc, developers will build the next generation of payment systems using AI + Arc with USDC. Explore a world where AI agents can understand natural language, automate financial actions, and move money with precision. From DeFi to digital content and real-world assets, this is your chance to shape the future of intelligent finance.
+
+
+
+📅 October 27 – November 9, 2025
+
+
+
+• Oct 27 – Nov 8 (Online Phase) – Collaborate and build with developers and AI innovators from around the world. All projects must be submitted by end of day on November 8.
+
+
+
+• Nov 8 (New York City – On-site Build Day) – Selected participants will be invited to an exclusive in-person session to refine their projects and connect directly.
+
+
+
+• Nov 9 (New York City – Live Pitching & Awards) – Live pitching sessions to a panel of judges and investors, followed by the official winner announcement.
+
+
+
+🧠 Get guidance from experts throughout the event.
+
+
+
+🤝 Go solo or team up — it's your flow.
+
+
+
+🏆Compete for $10,000 in USDC prizes.
+
+
+
+📍 On-site participation is by invitation only. Travel and accommodation expenses will not be covered.
+
+
+
+🧑🏻‍💻 Secure your spot now — sign up before the Kick-Off Stream!
+
+Enrolled
+AI Agents on Arc with USDC event thumbnail
+About
+Challenge
+Technology & Access
+Technologies & Workshops
+Technology Partners
+Prizes
+What to Submit?
+Judging Criteria
+Hackathon Details
+Speakers, Mentors & Judges
+Event Schedule
+Submissions
+Teams
+About Circle
+Circle is a leading innovator in digital currency infrastructure. As issuer of USDC, a trusted and widely used stablecoin, Circle is dedicated to enabling seamless, scalable value exchange globally.
+
+
+The launch of Arc, an open EVM-compatible Layer‑1 blockchain, marks a new milestone. It is purpose-built for stablecoin-native finance, featuring USDC as its native gas, predictable dollar-denominated fees, sub-second settlement, institutional-grade FX, privacy controls, and deep integration with Circle’s ecosystem.
+
+Participants in the USDC x Arc Hackathon will build on this robust financial infrastructure — championing programmable money for the next generation of digital finance.
+
+
+Build intelligent, real-world payment systems where AI drives decisions and Arc executes them with USDC
+
+Your mission: Build an AI-powered payment solution on Arc using USDC. Projects must deliver working prototypes within these innovation tracks:
+
+
+🔁 On-chain Actions – Create AI agents that autonomously interact with DeFi protocols like swaps, lending, or liquidity rebalancing.
+
+🏢 Payments for Real-World Assets (RWA) – Enable recurring or conditional USDC payments for tokenized assets like real estate, treasuries, or supply chain settlements.
+
+📺 Payments for Content – Design AI-native payment flows for creators, including micropayments, tipping, or subscription models for generative content.
+
+
+Submissions should include:
+
+
+• A working prototype
+
+• Clear problem-solving purpose
+
+• Clean, maintainable code
+
+• Simple, usable interfaces
+
+• Realistic pathways for adoption or reuse
+
+Technology & Access
+To build your project on Arc, you'll use a combination of recommended providers for account abstraction and onchain utility.
+
+🔒 Required Technologies:
+• Arc - All transactions settle on Arc, an EVM-compatible Layer-1.
+• USDC - USDC is the native EVM asset on Arc and is used for gas fees, transfers, and smart contract interactions.
+
+
+
+
+⚙️ Account Abstraction (Smart Wallets & User Onboarding):
+Tools that simplify wallet creation, authentication, and onboarding for users.
+• Circle Wallets - Create in-app wallets for global users and facilitate commerce at enterprise scale.
+• Thirdweb Wallets - Wallet Infrastructure to onboard, authenticate, and manage user identity in your application.
+• Crossmint Wallets - Crossmint makes it easy to embed wallets and financial services anywhere using chain-agnostic web2 APIs.
+• Blockradar - Our Wallet as a Service product provides fintechs with secure, scalable wallet infrastructure to power stablecoin transactions.
+• Dynamic - Onboard your users in a few clicks using SMS, email, or social logins—protected by TSS-MPC security and accompanied by powerful user management tools.
+• Para - One wallet for your ecosystem - identity, assets, and onboarding that only happens once.
+
+
+
+🧩 Onchain Utility (Cross-Chain Tools & USDC Movement):
+
+Protocols and SDKs that let you move USDC and interact with multiple chains.
+
+
+
+• CCTP V2 (Cross-Chain Transfer Protocol) - Seamlessly transfer USDC across supported blockchains for cross-chain agent use cases.
+• Bridge Kit - The Bridge Kit SDK lets you move USDC across blockchains in only a few lines of code.
+• Gateway - Circle Gateway enables a unified USDC balance, unlocking on-demand liquidity and redefining crosschain UX.
+• Pimlico - Pimlico provides a suite of tools and services to help you build, deploy, and manage smart accounts on Ethereum and other EVM-compatible chains.
+
+
+
+
+
+🧰 Developer Resources:
+
+• Circle Sample Apps - Explore Circle's Sample Projects as a guide for developing with the Circle Platform.
+• Deploy contract on Arc - This tutorial helps you deploy your smart contract on Arc Testnet.
+
+
+
+🧪 Access & Setup
+
+All development will take place in a testnet environment. No real funds are needed.
+• Testnet USDC Faucet 
+• No Credits Required – Since everything runs in testnet.
+Technologies & Workshops
+Arc
+Arc is an EVM-compatible Layer-1 blockchain using USDC as native gas, built for stablecoin finance, tokenization, and global payments across scalable & transparent networks.
+
+👉 Read mor﻿e about Arc
+ElevenLabs
+ElevenLabs, founded in 2022, develops AI speech software that instantly converts spoken audio between languages, backed by leading investors.
+
+👉 Read mor﻿e about ElevenLabs
+Cloudflare Workers AI
+Workers AI runs ML models globally on Cloudflare’s powerful serverless GPUs — with no scaling, maintenance, or infrastructure management required.
+
+👉 Read more about Workers AI
+AI/ML API
+AI/ML API provides advanced AI—text, image, and speech—with seamless integration, high performance, secure key management, and scalable deployment.
+
+👉 Read more about AI/ML API
+🎓 Workshops
+
+Get inspired and boost your skills with exclusive sessions from our partners and experts. Watch them anytime!
+Circle
+Speaker: Blessing Adesiji - Developer Relations Manager, EMEA
+
+Topic: AI Agents on Arc with USDC Hackathon - Kick-off Workshop
+
+
+▶️ Watch Video
+ElevenLabs
+Speaker: Thorsten Schaeff - Developer Relations 
+
+
+Topic: Build Your First Conversational Voice Agent with ElevenLabs - Complete Setup Guide
+
+▶️ Watch Video
+ AI/ML API
+Speaker: Sergey Nuzhnyy - Head of Developer Relations
+
+Topic: How to activate the Promo 
+
+Promo Code: ARCHACK20
+
+▶️ Watch Video
+AI/ML API
+Speaker: Sergey Nuzhnyy - Head of Developer Relations
+
+
+Topic: How to remove billing details
+
+
+▶️ Watch Video
+Technology Partners 
+All participants must build using Arc, a decentralized infrastructure layer purpose-built for gasless, USDC-native payments. Arc is the foundation of this hackathon—powering seamless, programmable transactions that unlock the full potential of intelligent, automated financial systems.
+
+Participants will also have access to additional tools and technologies to accelerate their builds:
+
+ElevenLabs is the leading voice AI platform, enabling lifelike, expressive, and multilingual speech synthesis for your agents.
+
+
+With ElevenLabs, you can:
+
+
+
+• Generate natural, human-like voices for any use case
+
+
+
+• Enable real-time, interactive voice experiences
+
+
+
+• Localize agents across languages, accents, and contexts
+
+
+
+Access: Only 500 coupons available - make sure you’re enrolled in the AI Agents on Arc with USDC Hackathon on lablab.ai to claim yours before they’re gone!
+
+
+👉ElevenLabs Coupon
+
+
+
+
+
+
+How to redeem:
+
+
+1. Log in to lablab.ai
+
+2. Ensure you’re enrolled and approved for the hackathon
+
+3. Go to ElevenLabs Coupon
+
+4. Click “Claim Coupon”
+
+5. Your unique coupon link will appear
+
+6. No need to enter any code — the subscription page will open with the coupon automatically applied
+
+7. Enjoy 3 months of the Creator Plan free 
+
+
+
+
+
+• Challenge: ElevenLabs sponsors the “Best Use of Voice AI”, where projects will be assessed based on:
+
+
+1. Best voice agent created
+
+2. Integration into an app built using the ElevenLabs Agents Platform
+
+
+
+
+
+⚠️ Important Notes:
+
+
+• Credits are provided by ElevenLabs and are subject to their delivery.
+
+• Lablab is not responsible or liable if ElevenLabs does not provide the credits.
+
+• Please note that the ElevenLabs is a subscription-based service. If you do not plan to continue using it after the hackathon, please remember to cancel your subscription to avoid any charges.
+
+
+
+Cloudflare Workers AI brings serverless, GPU-powered inference to the edge — enabling developers to run and scale AI models globally with minimal latency and zero infrastructure overhead. 
+
+
+With Workers AI, you can:
+
+• Run open-source LLMs, image, and text models directly on Cloudflare’s global network
+
+• Integrate AI inference seamlessly into your agents and applications
+
+• Combine with Cloudflare Workers, KV, and Durable Objects to build full-stack, edge-native AI solutions
+
+
+
+
+How to get started:
+
+1. Visit Cloudflare Workers AI
+
+
+2. Explore the available models and features
+
+3. Follow the Quickstart Guide to deploy your first model
+
+
+
+
+
+
+Resources:
+
+• Workers AI Documentation
+
+
+• Quickstart Guide
+• Example Models
+
+
+
+
+Thanks to our partner AI/ML API, you now have the chance to get exclusive free credits to experiment with cutting-edge models for your projects.
+
+
+We’re giving away 250 coupons — each with $20 in AI/ML API credits to supercharge your builds.
+
+
+
+
+Promo code: ARCHACK20
+
+
+
+Use this promo code at checkout to unlock a free subscription week with access to 100+ AI models across text, image, and vision tasks. ✨
+
+With AI/ML API, you can tap into:
+
+• Advanced language models for reasoning and creativity
+• Multimodal models like LLaMA, Qwen, Flux and more
+• A single API for all your AI needs
+
+
+
+
+How to Redeem:
+
+
+
+
+• Register on the AI/ML API website, choose the Startup plan, and enter the promo code.
+
+• Access will be available for one week starting from the hackathon Kick-off.
+
+• Monitor token usage — larger models are more costly per token, so for quick tests consider smaller ones before scaling.
+
+• For the technical support, visit AI/ML API Discord.   
+• Please note that the AI/ML API is a subscription-based service. If you do not plan to continue using it after the
+
+hackathon, please remember to cancel your subscription to avoid any charges.
+
+
+
+
+
+
+⚠️ Important Notes:
+
+• Credits are provided by AI/ML API and are subject to their delivery.
+
+
+
+• Lablab is not responsible or liable if AI/ML API  does not provide the credits.
+
+
+
+• Please note that the AI/ML API is a subscription-based service. If you do not plan to continue using it after the hackathon, please remember to cancel your subscription to avoid any charges.
+
+
+
+PRIZES
+🏆
+
+Hackathon Winners
+
+🥇 1st place - $5,000 in USDC
+
+🥈2nd place - $3,000 in USDC
+
+🥉3rd place -  $2,000 in USDC
+
+⭐
+
+Best use of ElevenLabs:
+
+🥇 Winner - Scale Plan for 6 months (worth ~$2,000 per team member) 
+
+Please be aware that participation in lablab.ai hackathons is voluntary and subject to the specific rules and conditions outlined for each event. While we strive to provide a fair and rewarding experience for all participants, we cannot guarantee entry or success in securing prizes. All prizes and opportunities are subject to availability and participants must meet the established criteria to qualify. lablab.ai is not responsible nor held liable for any commitments or offers - including programs, giveaways, or prizes - made by third-party sponsors or partners of the hackathon. The availability and delivery of third-party prizes or benefits are solely at the discretion of the respective sponsors and are not guaranteed by lablab.ai. We reserve the right to make amendments, modifications, or cancellations to any part of the hackathon (including full cancellation of the event itself), including prizes and terms of participation, at our sole discretion. Whenever possible, we will endeavor to notify participants of significant changes within a reasonable timeframe. All submissions by participants must be original work, open source, and compliant with the MIT License unless specified otherwise. By participating, you agree to these terms, the overall event terms, and the lablab.ai general terms and are encouraged to review all event-related information carefully. Prize Distribution: lablab.ai and its partners reserve the right to distribute all prizes within a 90-day period following the end date of the hackathon. This period allows for the proper processing and verification needed to award prizes appropriately.
+What to submit?
+📋 Basic Information
+
+• Project Title
+
+• Short Description
+
+• Long Description
+
+• Technology & Category Tags
+
+📸 Cover Image and Presentation
+
+• Cover Image
+
+• Video Presentation
+
+• Slide Presentation
+
+💻 App Hosting & Code Repository
+
+• Public GitHub Repository
+
+• Demo Application Platform
+
+• Application URL
+
+For further details and guidance, please visit Submission Guidelines
+
+
+lablab.ai
+Topic: Hackathon Submissions Process
+
+
+▶️ Watch Video
+Judging Criteria
+Application of Technology
+How effectively the chosen model(s) are integrated into the solution.
+Presentation
+The clarity and effectiveness of the project presentation.
+Business Value
+The impact and practical value, considering how well it fits into business areas.
+Originality
+The uniqueness & creativity of the solution, highlighting approaches and ability to demonstrate  behaviors.
+Hackathon Details
+Join lablab.ai hackathon and innovate using the latest models in the market. Discover all the relevant details below.
+
+🗓️ Where and when
+The start date of the hackathon is mentioned according to the date specified on the hackathon page, cover and schedule. The hackathon will take place on the lablab.ai platform and lablab.ai Discord server.
+
+🦸🏼‍♂️ Who can join?
+Everyone is welcome to participate, regardless of previous AI or coding experience! We encourage anyone with a passion for AI or an interest in exploring how it can be used in their field to join.
+
+😅 What about teams?
+If you don't have a team, don't worry! You can connect with other participants from all over the world on our dashboard or Discord server. We also recommend checking out our Discord server to find teammates and bounce around ideas. You can join the server here.
+
+🛠️ How to participate
+The hackathon will take place online on lablab.ai platform and lablab.ai Discord Server. Please register for both in order to participate. To participate click the "Enroll" button at the bottom of the page and read our Hackathon Guidelines and Getting Started Guide.
+
+🧠 Get prepared / Use Lablab.ai to Learn About AI
+To get ready for the hackathon, visit our AI Tech pages and read up on all the available technologies. You can also check out our tutorials page for more information on how to use them. Get a head start on your project by using the resources on lablab.ai!
