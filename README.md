@@ -1,53 +1,80 @@
-# NsureCat Hackathon MVP
+# NsureCat (Genesis) 🐱 | AI Agents on Arc Hackathon
 
-A FastAPI backend with vanilla JavaScript frontend for insurance savings discovery.
+Welcome to the nsurecat-genesis repository. This is our "responsible rebel" submission for the AI Agents on Arc with USDC Hackathon.
 
-## Architecture
+## Our Hook: "1 minute with the 'Cat' can save you 10% or more."
 
-- **Backend**: FastAPI (Python) with Uvicorn server
-- **Frontend**: Static HTML/CSS/Vanilla JS served by Python http.server
-- **AI Agent**: Mocked shopping logic
-- **Blockchain**: Web3.py integration with Arc Testnet
-- **Environment**: Conda for Python environment management
+## Our Ethos: "You just call the cat."
 
-## Setup
+NsureCat is your personal AI agent that autonomously shops for insurance, transforming a 3-hour nightmare into a 1-minute conversation.
 
-1. Run `./setup.sh` to create conda environment and install dependencies.
-2. Run `./start.sh` to start both backend (port 8000) and frontend (port 8001) servers.
-3. Open `http://localhost:8001/scan.html` in your browser.
+## 🚀 The Hackathon MVP Flow
 
-## Testing
+We are building a "working prototype" that demonstrates the entire AI-driven payment flow.
 
-Run `./test.sh` to execute pytest tests.
+### Step 1: "Call the Cat" (Input)
 
-## Project Structure
+A user lands on our app and provides their 6 key policy details.
 
-- `src/backend/`: FastAPI application
-- `src/frontend/`: Static web files
-- `src/api_routes/`: API endpoints
-- `src/agent/`: AI agent logic
-- `src/services/`: External service integrations
-- `tests/`: Unit tests
-Hackathon-Specific Requirements
-These are the non-negotiable features required to meet the hackathon's technical judging criteria.
-AI Agent (Must-Have):
-The system must have a distinct AI Agent component (in the code) that is triggered by Step 2.
-For the hackathon, this agent's logic will be mocked (it returns a hardcoded JSON).
-Account Abstraction (Must-Have):
-We must use one of the "Account Abstraction" tools.
-We will use the Circle Wallets SDK on the frontend to provide a "seamless wallet creation" flow (e.g., "Sign in with Google").
-We will also support connecting an existing wallet to satisfy power users.
-Arc / USDC (Must-Have):
-We must deploy a real, simple Smart Contract to the Arc Testnet.
-When the user completes the "2-Step Checkout," our backend will call this contract to transfer a small amount of Testnet USDC (simulating our 10% fee).
-Voice AI (Must-Have):
-We must integrate ElevenLabs to hit the prize category.
-This will be the "Call the Cat" voice-driven interview for our "Step 1" input.
-v2 Vision (Mockup-Only):
-The "Results" page will feature a visual-only mockup of our "Community Benchmark" feature.
-The final "Success!" page will feature a visual-only mockup of our "Fee Refund Hook" (e.g., "We've applied your $24.60 fee as a credit. Let NsureCat shop for your next policy, and it's on us!").
-Out of Scope (The "Rebel Discipline")
-To ensure we finish, the following are explicitly out of scope for the hackathon:
-NO traditional email/password database (the Circle Wallet is the user's login and identity).
-NO real-world carrier API integrations (all quotes are mocked).
-NO real-world bank account linking (we will use the Testnet Faucet).
+**Hackathon Tech**: We provide two ways: a simple form or a "Call the Cat" button that uses the ElevenLabs Voice AI for a guided interview.
+
+### Step 2: "AI Agent Shop" (Processing)
+
+The user clicks "Find My Savings."
+
+**Hackathon Tech**: Our frontend calls our FastAPI (Python) backend, which triggers our AI Agent to find the best "apples-to-apples" quote. (For the sprint, this agent's external calls are mocked).
+
+### Step 3: "On-Chain Checkout" (Action)
+
+The user sees their savings (e.g., "$246 for 6 months!") and clicks "Save Now."
+
+**Hackathon Tech (Account Abstraction)**: The user creates a new, seamless wallet in seconds using the Circle Wallets SDK OR connects an existing wallet.
+
+**Hackathon Tech (Arc / USDC)**: After funding from the Arc Testnet Faucet, the user's wallet executes a real Smart Contract on the Arc Testnet, transferring our 10% fee (e.g., 0.01 USDC) to the NsureCat treasury.
+
+## 🛠️ Core Technology Stack
+
+This project uses a hybrid, "responsible rebel" architecture to meet all hackathon requirements.
+
+- **Frontend**: HTML5, CSS3 & Vanilla JavaScript (to support the required wallet and voice SDKs)
+- **Backend**: Python 3.10+ with FastAPI & Uvicorn
+- **AI Agent**: Python modules using AI logic (mocked for sprint)
+- **Voice**: ElevenLabs (for voice interview) & Speech-to-Text
+- **Wallets**: Circle Wallets SDK & ethers.js
+- **Blockchain**: Arc Testnet
+- **Smart Contracts**: Solidity
+- **Payment**: USDC (on Arc Testnet)
+- **Environment**: Conda (for backend)
+
+## 📁 Project Structure
+
+This project follows our Standard Python Web Stack Architecture.
+
+```text
+/src/frontend/: All static HTML, CSS & Vanilla JS source code.
+/src/backend/: Main FastAPI (Python) application logic.
+/src/api_routes/: FastAPI routers that connect the FE and BE.
+/src/agent/: Core Python logic for the NsureCat AI agent.
+/src/services/: Python modules for external calls (e.g., Arc, ElevenLabs).
+/src/contracts/: Solidity smart contract source.
+/tests/: Pytest test suite.
+/docs/: All product and technical documentation.
+/utils/: Utility scripts and tools.
+```
+
+## 🚀 Quick Start
+
+See [run.md](run.md) for detailed setup and run instructions.
+
+```bash
+# Setup and start the application
+./nsurecat.sh setup
+./nsurecat.sh start
+
+# Open: http://localhost:8001/scan.html
+```
+
+## 📚 Documentation
+
+- **[run.md](run.md)** - Setup and run instructions
+- **[docs/](docs/)** - Product requirements and technical documentation
