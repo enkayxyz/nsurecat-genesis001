@@ -76,5 +76,22 @@ See [run.md](run.md) for detailed setup and run instructions.
 
 ## 📚 Documentation
 
-- **[run.md](run.md)** - Setup and run instructions
-- **[docs/](docs/)** - Product requirements and technical documentation
+### Getting Started
+- **[Quick Start Guide](docs/frontend/quick_start.md)** - Get up and running in 5 minutes
+- **[run.md](run.md)** - Detailed setup and run instructions
+
+### Frontend Documentation
+- **[Frontend Overview](docs/frontend/README.md)** - Complete frontend documentation index
+- **[Implementation Summary](docs/frontend/implementation_summary.md)** - Architecture and features
+- **[Integration Verification](docs/frontend/integration_verification.md)** - Testing and verification
+
+### Project Documentation
+- **[Product Requirements](docs/)** - Product requirements and technical specs
+- **[Frontend Requirements](docs/front%20end%20req%20spec.md)** - Frontend specifications
+- **[Integration Specs](docs/integration%20specs.md)** - System integration details
+
+### Component Documentation
+- **[Backend](docs/backend/)** - Backend API documentation
+- **[Agent](docs/agent/)** - AI agent documentation
+- **[Services](docs/services/)** - External service integrations
+- **[Contracts](docs/contracts/)** - Smart contract documentation

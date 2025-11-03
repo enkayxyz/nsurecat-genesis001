@@ -2,9 +2,18 @@
 
 Single-page chat application using vanilla HTML/JS/CSS, served by Python http.server.
 
+## 📚 Documentation
+
+**For complete documentation, see:**
+- **[docs/frontend/README.md](../../docs/frontend/README.md)** - Complete documentation index
+- **[Quick Start Guide](../../docs/frontend/quick_start.md)** - Get up and running in 5 minutes
+- **[Implementation Summary](../../docs/frontend/implementation_summary.md)** - Architecture and features
+- **[Integration Verification](../../docs/frontend/integration_verification.md)** - Testing checklist
+
 ## Architecture Overview
 
 NsureCat uses a conversational chat interface where users interact with "Cat" (AI assistant) to:
+
 1. Input their current insurance policy details (via form or voice)
 2. Get AI-powered savings quotes from multiple carriers
 3. Select a better policy option

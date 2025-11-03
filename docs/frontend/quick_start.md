@@ -90,13 +90,13 @@ pytest tests/frontend/test_chat_flow.py -v
 
 ---
 
-## 📁 New Files Created
+### New Files Created
 
 - ✅ `src/frontend/index.html` - Main chat page
 - ✅ `src/frontend/chat.js` - Complete app logic (600+ lines)
 - ✅ `src/frontend/styles.css` - Full redesign with dark mode
 - ✅ `tests/frontend/test_chat_flow.py` - 13 comprehensive tests
-- ✅ `tests/frontend/INTEGRATION_VERIFICATION.md` - Detailed guide
+- ✅ `docs/frontend/integration_verification.md` - Detailed guide
 
 ---
 
@@ -135,8 +135,8 @@ lsof -ti:3000 | xargs kill -9
 ## 📖 Full Documentation
 
 - **README**: `src/frontend/README.md`
-- **Integration Tests**: `tests/frontend/INTEGRATION_VERIFICATION.md`
-- **Implementation Summary**: `FRONTEND_IMPLEMENTATION_SUMMARY.md`
+- **Integration Tests**: `docs/frontend/integration_verification.md`
+- **Implementation Summary**: `docs/frontend/implementation_summary.md`
 
 ---
 
