@@ -5,6 +5,10 @@ from pydantic import BaseModel
 import httpx
 import os
 
+# Import routers
+from api_routes.shop import router as shop_router
+from api_routes.save import router as save_router
+
 app = FastAPI()
 
 # Enable CORS
@@ -15,6 +19,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include routers
+app.include_router(shop_router, prefix="/v1", tags=["shop"])
+app.include_router(save_router, prefix="/v1", tags=["save"])
 
 # ElevenLabs configuration
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")

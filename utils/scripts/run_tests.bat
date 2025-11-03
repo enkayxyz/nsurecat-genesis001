@@ -17,7 +17,10 @@ if %errorlevel% neq 0 (
 
 cd /d "%PROJECT_ROOT%"
 
+echo Installing Playwright browsers...
+conda run -n "%ENV_NAME%" python -m playwright install chromium
+
 echo Activating environment and running pytest
-conda run -n "%ENV_NAME%" pytest tests/ -v
+conda run -n "%ENV_NAME%" pytest tests/ -v --browser chromium
 
 echo SUCCESS: Tests completed

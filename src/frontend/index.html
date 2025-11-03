@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NsureCat - Chat with Cat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-navbar" role="banner">
+        <div class="header-content">
+            <h1 class="header-title">Chat with Cat 🐱</h1>
+            <button 
+                id="theme-toggle" 
+                class="theme-toggle-btn" 
+                aria-label="Toggle theme"
+                data-testid="theme-toggle-button">
+                <span class="theme-icon" id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Chat Container -->
+    <main class="chat-container" role="main">
+        <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-atomic="false">
+            <!-- Chat bubbles will be dynamically inserted here -->
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loading-spinner" style="display: none;" aria-label="Processing">
+            <div class="spinner"></div>
+            <p class="loading-text">Processing...</p>
+        </div>
+    </main>
+
+    <!-- Footer Input Area -->
+    <footer class="footer-input" role="contentinfo">
+        <div class="input-container">
+            <!-- Text Input -->
+            <div class="text-input-wrapper">
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    class="user-input" 
+                    placeholder="Type your message..."
+                    aria-label="Message input"
+                    data-testid="user-input">
+                <button 
+                    id="send-btn" 
+                    class="send-btn" 
+                    aria-label="Send message"
+                    data-testid="send-button">
+                    Send
+                </button>
+            </div>
+
+            <!-- Voice Button -->
+            <button 
+                id="voice-btn" 
+                class="voice-btn" 
+                aria-label="Use voice input"
+                data-testid="voice-button">
+                🎤
+            </button>
+        </div>
+    </footer>
+
+    <!-- Policy Form Modal (Hidden by default) -->
+    <div id="policy-form-modal" class="modal" style="display: none;" role="dialog" aria-labelledby="form-modal-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="form-modal-title">Enter Your Policy Details</h2>
+                <button class="modal-close" id="close-form-modal" aria-label="Close form">&times;</button>
+            </div>
+            <form id="policy-form" class="policy-form">
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <select id="state" name="state" required>
+                        <option value="">Select State</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NY">New York</option>
+                        <option value="CA">California</option>
+                        <option value="TX">Texas</option>
+                        <option value="FL">Florida</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="carrier">Current Carrier:</label>
+                    <select id="carrier" name="carrier" required>
+                        <option value="">Select Carrier</option>
+                        <option value="Geico">Geico</option>
+                        <option value="Progressive">Progressive</option>
+                        <option value="State Farm">State Farm</option>
+                        <option value="Allstate">Allstate</option>
+                        <option value="Liberty Mutual">Liberty Mutual</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount (6 months):</label>
+                    <input type="number" id="amount" name="amount" placeholder="e.g., 975" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bodily_injury">Bodily Injury:</label>
+                    <select id="bodily_injury" name="bodily_injury" required>
+                        <option value="">Select Coverage</option>
+                        <option value="25/50">$25,000/$50,000</option>
+                        <option value="50/100">$50,000/$100,000</option>
+                        <option value="100/300">$100,000/$300,000</option>
+                        <option value="250/500">$250,000/$500,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="property_damage">Property Damage:</label>
+                    <select id="property_damage" name="property_damage" required>
+                        <option value="">Select Coverage</option>
+                        <option value="25000">$25,000</option>
+                        <option value="50000">$50,000</option>
+                        <option value="100000">$100,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="uninsured_motorist">Uninsured Motorist:</label>
+                    <select id="uninsured_motorist" name="uninsured_motorist" required>
+                        <option value="">Select Coverage</option>
+                        <option value="25/50">$25,000/$50,000</option>
+                        <option value="50/100">$50,000/$100,000</option>
+                        <option value="100/300">$100,000/$300,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="collision">Collision:</label>
+                    <select id="collision" name="collision" required>
+                        <option value="">Select Deductible</option>
+                        <option value="250">$250</option>
+                        <option value="500">$500</option>
+                        <option value="1000">$1,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comprehensive">Comprehensive:</label>
+                    <select id="comprehensive" name="comprehensive" required>
+                        <option value="">Select Deductible</option>
+                        <option value="250">$250</option>
+                        <option value="500">$500</option>
+                        <option value="1000">$1,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="personal_injury_protection">Personal Injury Protection:</label>
+                    <select id="personal_injury_protection" name="personal_injury_protection" required>
+                        <option value="">Select Coverage</option>
+                        <option value="15000">$15,000</option>
+                        <option value="50000">$50,000</option>
+                        <option value="100000">$100,000</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary" data-testid="submit-policy-form">Submit</button>
+                    <button type="button" class="btn-secondary" id="cancel-form">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Wallet Connection Modal -->
+    <div id="wallet-modal" class="modal" style="display: none;" role="dialog" aria-labelledby="wallet-modal-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="wallet-modal-title">Connect Your Wallet</h2>
+                <button class="modal-close" id="close-wallet-modal" aria-label="Close wallet modal">&times;</button>
+            </div>
+            <div class="wallet-options">
+                <button class="wallet-btn" id="connect-metamask" data-testid="connect-metamask">
+                    <span class="wallet-icon">🦊</span>
+                    <span>MetaMask</span>
+                </button>
+                <button class="wallet-btn" id="connect-circle" data-testid="connect-circle">
+                    <span class="wallet-icon">⭕</span>
+                    <span>Circle</span>
+                </button>
+            </div>
+            <div id="wallet-status" class="wallet-status"></div>
+        </div>
+    </div>
+
+    <!-- Error Toast -->
+    <div id="error-toast" class="error-toast" style="display: none;" role="alert" aria-live="assertive">
+        <span id="error-message"></span>
+        <button class="toast-close" id="close-toast" aria-label="Close error">&times;</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="chat.js"></script>
+</body>
+</html>

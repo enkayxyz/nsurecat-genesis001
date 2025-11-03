@@ -6,4 +6,6 @@ web3>=6.0.0
 requests>=2.31.0
 elevenlabs>=0.2.0
 python-multipart>=0.0.6
+playwright>=1.40.0
+pytest-playwright>=0.4.0
 # <parameter name="filePath">/Users/enkay/src/dev/nsurecat-genesis001/requirements.txt
