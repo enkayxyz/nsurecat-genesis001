@@ -1,9 +1,14 @@
 // NsureCat Chat Application - Vanilla JavaScript
 // Main chat interface with voice, wallet, and API integration
 
-// Configuration
-const API_BASE_URL = 'http://localhost:8000';
-const FRONTEND_PORT = 3000;
+// Load configuration from config.js (included in HTML)
+// Falls back to defaults if config.js not loaded
+const API_BASE_URL = (typeof NsureCatConfig !== 'undefined') 
+    ? NsureCatConfig.API_BASE_URL 
+    : 'http://localhost:8000';
+const FRONTEND_PORT = (typeof NsureCatConfig !== 'undefined')
+    ? NsureCatConfig.FRONTEND_PORT
+    : 8001;
 
 // Global State
 const appState = {

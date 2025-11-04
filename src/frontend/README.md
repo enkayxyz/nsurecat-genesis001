@@ -159,11 +159,11 @@ Tests located in `/tests/frontend/`:
 ### Running Frontend:
 ```bash
 # From project root
-python -m http.server 3000 --directory src/frontend
+python -m http.server 8001 --directory src/frontend
 ```
 
 ### Accessing:
-- Main chat: `http://localhost:3000/index.html`
+- Main chat: `http://localhost:8001/index.html`
 - Backend API: `http://localhost:8000` (must be running)
 
 ### Browser Requirements:

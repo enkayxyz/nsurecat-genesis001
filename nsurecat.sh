@@ -5,8 +5,14 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Source configuration
+source "$SCRIPT_DIR/utils/config/config.sh"
+
 # Main script logic
 case "${1:-help}" in
+    config)
+        show_config
+        ;;
     setup)
         "$SCRIPT_DIR/utils/setup/setup_env.sh" && "$SCRIPT_DIR/utils/setup/setup_deps.sh"
         ;;
@@ -36,6 +42,7 @@ USAGE:
     ./nsurecat.sh [COMMAND]
 
 COMMANDS:
+    config    Show current configuration (ports, URLs, env name)
     setup     Create conda environment and install dependencies
     start     Start both backend and frontend servers
     stop      Stop all running servers
@@ -47,6 +54,7 @@ COMMANDS:
     help      Show this help message
 
 EXAMPLES:
+    ./nsurecat.sh config   # Show configuration
     ./nsurecat.sh setup    # Set up the environment
     ./nsurecat.sh start    # Start the application
     ./nsurecat.sh status   # Check what's running
@@ -55,9 +63,10 @@ EXAMPLES:
     ./nsurecat.sh stop     # Stop everything
     ./nsurecat.sh clean    # Clean up everything
 
-SERVICES:
-    Backend:  FastAPI server on port 8000
-    Frontend: Static file server on port 8001
+CONFIGURATION:
+    Environment: ${NSURECAT_ENV_NAME}
+    Backend:  ${BACKEND_URL}
+    Frontend: ${FRONTEND_URL}
 
 EOF
         ;;

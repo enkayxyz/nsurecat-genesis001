@@ -85,6 +85,10 @@ See [run.md](run.md) for detailed setup and run instructions.
 - **[Implementation Summary](docs/frontend/implementation_summary.md)** - Architecture and features
 - **[Integration Verification](docs/frontend/integration_verification.md)** - Testing and verification
 
+### Utilities & Configuration
+- **[Configuration Guide](docs/utils/CONFIG.md)** - Configuration system documentation
+- **[Testing Guide](docs/utils/RUN_TESTS.md)** - How to run tests
+
 ### Project Documentation
 - **[Product Requirements](docs/)** - Product requirements and technical specs
 - **[Frontend Requirements](docs/front%20end%20req%20spec.md)** - Frontend specifications

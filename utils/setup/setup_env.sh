@@ -3,9 +3,15 @@
 # Environment setup utility
 # Creates conda environment for NsureCat
 
-ENV_NAME="nsurecat-env"
+# Get script directory and project root
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+# Source configuration
+source "$PROJECT_ROOT/utils/config/config.sh"
 
 echo "Setting up NsureCat environment..."
+show_config
 
 # Check if conda is available
 if ! command -v conda &> /dev/null; then
@@ -14,12 +20,12 @@ if ! command -v conda &> /dev/null; then
 fi
 
 # Remove existing environment if it exists
-if conda env list | grep -q "$ENV_NAME"; then
-    echo "Removing existing environment '$ENV_NAME'..."
-    conda env remove -n "$ENV_NAME" -y
+if conda env list | grep -q "$NSURECAT_ENV_NAME"; then
+    echo "Removing existing environment '$NSURECAT_ENV_NAME'..."
+    conda env remove -n "$NSURECAT_ENV_NAME" -y
 fi
 
-echo "Creating conda environment: $ENV_NAME"
-conda create -n "$ENV_NAME" python=3.10 -y
+echo "Creating conda environment: $NSURECAT_ENV_NAME (Python $PYTHON_VERSION)"
+conda create -n "$NSURECAT_ENV_NAME" python=$PYTHON_VERSION -y
 
 echo "SUCCESS: Environment setup complete"
