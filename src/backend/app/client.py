@@ -1,5 +1,5 @@
 from circle.web3 import utils
-from app.config import Config
+from backend.app.config import Config
 
 def get_circle_client():
     """

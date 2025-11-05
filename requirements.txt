@@ -1,25 +1,19 @@
-fastapi>=0.104.0
-uvicorn[standard]>=0.24.0
-pydantic>=2.0.0
-pytest>=7.0.0
-web3==7.14.0
-requests>=2.31.0
-elevenlabs>=0.2.0
-python-multipart>=0.0.6
-playwright>=1.40.0
-pytest-playwright>=0.4.0
-circle-configurations==8.1.1
-circle-developer-controlled-wallets==8.1.1
-circle-web3-sdk-util==8.1.1
-
 # FastAPI and server
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
 pydantic==2.5.0
 pydantic-settings==2.1.0
 
-# Circle SDK
-# circle-web3==1.0.0
+# Testing
+pytest==7.4.3
+pytest-playwright==0.3.0
+playwright==1.40.0
+
+# Web3 and Circle SDK
+web3==7.14.0
+circle-configurations==8.1.1
+circle-developer-controlled-wallets==8.1.1
+circle-web3-sdk-util==8.1.1
 
 # OpenAI
 openai==1.3.5
@@ -33,4 +27,6 @@ aiosqlite==0.19.0
 # Utilities
 python-multipart==0.0.6
 httpx==0.25.1
+requests==2.31.0
+elevenlabs==0.2.0
 # <parameter name="filePath">/Users/enkay/src/dev/nsurecat-genesis001/requirements.txt

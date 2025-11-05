@@ -21,10 +21,13 @@ fi
 
 cd "$PROJECT_ROOT"
 
+echo "Installing/updating Python dependencies from requirements.txt..."
+conda run -n "$NSURECAT_ENV_NAME" pip install -r requirements.txt
+
 echo "Installing Playwright browsers..."
 conda run -n "$NSURECAT_ENV_NAME" python -m playwright install chromium
 
-echo "Activating environment and running pytest"
-conda run -n "$NSURECAT_ENV_NAME" pytest tests/ $PYTEST_ARGS --browser chromium
+echo "Activating environment and running pytest (all tests)"
+PYTHONPATH=src conda run -n "$NSURECAT_ENV_NAME" pytest tests/ $PYTEST_ARGS --browser chromium
 
 echo "SUCCESS: Tests completed"

@@ -3,7 +3,11 @@
 # Cleanup utility
 # Cleans up environment, caches, and stops services
 
-ENV_NAME="nsurecat-env"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(dirname "$(dirname "$(dirname "$SCRIPT_DIR")")")"
+# Source configuration
+source "$PROJECT_ROOT/utils/config/config.sh"
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$(dirname "$(dirname "$SCRIPT_DIR")")")"
 BACKEND_PID_FILE="$PROJECT_ROOT/.backend.pid"
@@ -21,10 +25,9 @@ find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 find . -name "*.pyc" -delete 2>/dev/null || true
 find . -name "*.pyo" -delete 2>/dev/null || true
 
-# Remove conda environment
-if conda env list | grep -q "$ENV_NAME"; then
-    echo "Removing conda environment '$ENV_NAME'"
-    conda env remove -n "$ENV_NAME" -y
+if conda env list | grep -q "$NSURECAT_ENV_NAME"; then
+    echo "Removing conda environment '$NSURECAT_ENV_NAME'"
+    conda env remove -n "$NSURECAT_ENV_NAME" -y
 fi
 
 echo "SUCCESS: Cleanup completed"

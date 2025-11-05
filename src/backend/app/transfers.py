@@ -1,11 +1,9 @@
 from circle.web3 import developer_controlled_wallets
-from app.client import get_circle_client
+from backend.app.client import get_circle_client
 
 def transfer_tokens(source_wallet_id: str, destination_wallet_id: str, amount: str, token_address: str):
     client = get_circle_client()
     api_instance = developer_controlled_wallets.TransactionsApi(client)
-    # create an api instance
-
     try:
         request = developer_controlled_wallets.CreateTransferTransactionForDeveloperRequest.from_dict({
             "walletId": source_wallet_id,

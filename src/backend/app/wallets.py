@@ -1,6 +1,6 @@
 from circle.web3 import developer_controlled_wallets
-from app.client import get_circle_client
-from app.config import Config
+from backend.app.client import get_circle_client
+from backend.app.config import Config
 
 def create_wallet():
     client = get_circle_client()

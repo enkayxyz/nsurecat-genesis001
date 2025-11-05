@@ -3,7 +3,6 @@
 # This file defines all environment variables and configuration used across the project
 # Source this file in all scripts to ensure consistency
 
-# Environment
 export NSURECAT_ENV_NAME="nsurecat"
 export PYTHON_VERSION="3.10"
 
@@ -18,12 +17,7 @@ export FRONTEND_URL="http://localhost:${FRONTEND_PORT}"
 # API Configuration
 export API_BASE_URL="${BACKEND_URL}"
 
-# Directories (config is in utils/config, so go up two levels to reach project root)
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-export PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-export BACKEND_DIR="${PROJECT_ROOT}/src/backend"
-export FRONTEND_DIR="${PROJECT_ROOT}/src/frontend"
-export TESTS_DIR="${PROJECT_ROOT}/tests"
+## Directories are set by each CLI script, not here
 
 # Testing
 export TEST_TIMEOUT=30000

@@ -1,5 +1,5 @@
 import pytest
-from src.agent.mock_shopper import find_savings
+from agent.mock_shopper import find_savings
 
 def test_find_savings():
     data = {"key": "value"}

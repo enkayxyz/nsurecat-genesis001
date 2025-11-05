@@ -100,10 +100,10 @@
 #     import uvicorn
 #     uvicorn.run(app, host="0.0.0.0", port=8000)
 from fastapi import FastAPI
-from app.wallet_sets import create_wallet_set
-from app.wallets import create_wallet, get_wallet_balance
-from app.transfers import transfer_tokens
-from app.getTransactionState import transaction_status
+from backend.app.wallet_sets import create_wallet_set
+from backend.app.wallets import create_wallet, get_wallet_balance
+from backend.app.transfers import transfer_tokens
+from backend.app.getTransactionState import transaction_status
 from pydantic import BaseModel
 app = FastAPI(title="Circle Wallet Backend")
 
