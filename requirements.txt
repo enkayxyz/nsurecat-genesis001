@@ -8,4 +8,7 @@ elevenlabs>=0.2.0
 python-multipart>=0.0.6
 playwright>=1.40.0
 pytest-playwright>=0.4.0
+circle-web3>=0.1.0
+circle-developer-controlled-wallets
+circle-web3-sdk-util
 # <parameter name="filePath">/Users/enkay/src/dev/nsurecat-genesis001/requirements.txt
