@@ -3,12 +3,55 @@
 
 // Load configuration from config.js (included in HTML)
 // Falls back to defaults if config.js not loaded
-const API_BASE_URL = (typeof NsureCatConfig !== 'undefined') 
-    ? NsureCatConfig.API_BASE_URL 
+const API_BASE_URL = (typeof NsureCatConfig !== 'undefined')
+    ? NsureCatConfig.API_BASE_URL
     : 'http://localhost:8000';
 const FRONTEND_PORT = (typeof NsureCatConfig !== 'undefined')
     ? NsureCatConfig.FRONTEND_PORT
     : 8001;
+
+// ============= Bilingual Support (EN/ES) =============
+const translations = {
+    en: {
+        greeting: "Hi! I'm Cat. Let's find you better insurance. How would you like to share your policy details? Form, voice, or upload?",
+        voiceReady: "Great! Click the microphone button and tell me about your policy.",
+        processing: "Processing...",
+        savings: "Great news! I found you savings of",
+        carrier: "with carrier",
+        formSubmit: "Submit",
+        formCancel: "Cancel",
+        connectWallet: "Connect Your Wallet",
+        metaMask: "Connect with MetaMask",
+        circle: "Connect with Circle Wallet",
+        sendButton: "Send",
+        placeholder: "Type your message...",
+        formButton: "Form",
+        voiceButton: "Voice"
+    },
+    es: {
+        greeting: "¡Hola! Soy el Gato. Vamos a encontrarte un mejor seguro. ¿Cómo te gustaría compartir los detalles de tu póliza? ¿Formulario, voz o subir archivo?",
+        voiceReady: "¡Genial! Haz clic en el botón del micrófono y cuéntame sobre tu póliza.",
+        processing: "Procesando...",
+        savings: "¡Buenas noticias! Te encontré ahorros de",
+        carrier: "con la aseguradora",
+        formSubmit: "Enviar",
+        formCancel: "Cancelar",
+        connectWallet: "Conecta Tu Billetera",
+        metaMask: "Conectar con MetaMask",
+        circle: "Conectar con Billetera Circle",
+        sendButton: "Enviar",
+        placeholder: "Escribe tu mensaje...",
+        formButton: "Formulario",
+        voiceButton: "Voz"
+    }
+};
+
+let currentLanguage = 'en';
+
+// Helper function to get translated text
+function t(key) {
+    return translations[currentLanguage][key] || translations.en[key] || key;
+}
 
 // Global State
 const appState = {
@@ -27,13 +70,14 @@ const appState = {
     selectedResult: null,
     walletAddress: '',
     theme: 'light',
+    language: 'en',
     isVoiceEnabled: false,
     recognition: null,
     isProcessing: false
 };
 
 // DOM Elements
-let chatMessages, userInput, sendBtn, voiceBtn, themeToggleBtn, loadingSpinner;
+let chatMessages, userInput, sendBtn, voiceBtn, themeToggleBtn, languageToggleBtn, loadingSpinner;
 let policyFormModal, walletModal, errorToast;
 
 // Initialize app on page load
@@ -48,6 +92,7 @@ function initializeApp() {
     sendBtn = document.getElementById('send-btn');
     voiceBtn = document.getElementById('voice-btn');
     themeToggleBtn = document.getElementById('theme-toggle');
+    languageToggleBtn = document.getElementById('language-toggle');
     loadingSpinner = document.getElementById('loading-spinner');
     policyFormModal = document.getElementById('policy-form-modal');
     walletModal = document.getElementById('wallet-modal');
@@ -59,6 +104,10 @@ function initializeApp() {
     // Initialize theme
     applyTheme(appState.theme);
 
+    // Initialize language
+    currentLanguage = appState.language || 'en';
+    updateLanguageUI();
+
     // Set up event listeners
     setupEventListeners();
 
@@ -67,8 +116,8 @@ function initializeApp() {
 
     // Start chat with greeting
     if (appState.chatHistory.length === 0) {
-        addCatMessage("Hi! I'm Cat. Let's find you better insurance. How would you like to share your policy details? Form, voice, or upload?", true);
-        addQuickReplyButtons(['Form', 'Voice']);
+        addCatMessage(t('greeting'), true);
+        addQuickReplyButtons([t('formButton'), t('voiceButton')]);
     } else {
         // Restore chat history
         restoreChatHistory();
@@ -87,6 +136,11 @@ function setupEventListeners() {
 
     // Theme toggle
     themeToggleBtn.addEventListener('click', toggleTheme);
+
+    // Language toggle
+    if (languageToggleBtn) {
+        languageToggleBtn.addEventListener('click', toggleLanguage);
+    }
 
     // Policy form
     document.getElementById('close-form-modal').addEventListener('click', closePolicyFormModal);
@@ -174,13 +228,17 @@ function handleQuickReply(option) {
     // Remove quick reply buttons
     const quickReplies = document.querySelectorAll('.quick-replies');
     quickReplies.forEach(qr => qr.remove());
-    
+
     addUserMessage(option);
-    
-    if (option === 'Form') {
+
+    // Handle both English and Spanish options
+    const isFormOption = option === 'Form' || option === 'Formulario' || option === t('formButton');
+    const isVoiceOption = option === 'Voice' || option === 'Voz' || option === t('voiceButton');
+
+    if (isFormOption) {
         openPolicyFormModal();
-    } else if (option === 'Voice') {
-        addCatMessage("Great! Click the microphone button and tell me about your policy.", true);
+    } else if (isVoiceOption) {
+        addCatMessage(t('voiceReady'), true);
     }
 }
 
@@ -531,10 +589,67 @@ function applyTheme(theme) {
     }
 }
 
+// ============= Language Functions =============
+
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+    appState.language = currentLanguage;
+    updateLanguageUI();
+    saveStateToLocalStorage();
+}
+
+function updateLanguageUI() {
+    // Update language toggle button
+    if (languageToggleBtn) {
+        const enSpan = languageToggleBtn.querySelector('[data-lang="en"]');
+        const esSpan = languageToggleBtn.querySelector('[data-lang="es"]');
+
+        if (enSpan && esSpan) {
+            if (currentLanguage === 'en') {
+                enSpan.classList.add('active');
+                esSpan.classList.remove('active');
+            } else {
+                esSpan.classList.add('active');
+                enSpan.classList.remove('active');
+            }
+        }
+    }
+
+    // Update UI text elements
+    userInput.placeholder = t('placeholder');
+    const sendBtnText = sendBtn.querySelector('.btn-gradient-text');
+    if (sendBtnText) {
+        sendBtnText.textContent = t('sendButton');
+    }
+
+    // Update loading text
+    const loadingText = loadingSpinner.querySelector('.loading-text');
+    if (loadingText) {
+        loadingText.textContent = t('processing');
+    }
+
+    // Update form buttons (if modal is open)
+    const submitBtn = document.querySelector('[data-testid="submit-policy-form"]');
+    const cancelBtn = document.getElementById('cancel-form');
+    if (submitBtn) submitBtn.textContent = t('formSubmit');
+    if (cancelBtn) cancelBtn.textContent = t('formCancel');
+
+    // Update header tagline
+    const tagline = document.querySelector('.header-tagline');
+    if (tagline) {
+        if (currentLanguage === 'es') {
+            tagline.textContent = '¡Rebélate contra el seguro tradicional!';
+        } else {
+            tagline.textContent = 'Rebel against traditional insurance!';
+        }
+    }
+}
+
 // ============= UI Helper Functions =============
 
-function showLoading(text = 'Processing...') {
-    loadingSpinner.querySelector('.loading-text').textContent = text;
+function showLoading(text = null) {
+    const loadingText = text || t('processing');
+    loadingSpinner.querySelector('.loading-text').textContent = loadingText;
     loadingSpinner.style.display = 'flex';
 }
 

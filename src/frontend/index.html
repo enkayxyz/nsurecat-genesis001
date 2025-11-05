@@ -10,14 +10,22 @@
     <!-- Header -->
     <header class="header-navbar" role="banner">
         <div class="header-content">
-            <h1 class="header-title">Chat with Cat 🐱</h1>
-            <button 
-                id="theme-toggle" 
-                class="theme-toggle-btn" 
-                aria-label="Toggle theme"
-                data-testid="theme-toggle-button">
-                <span class="theme-icon" id="theme-icon">🌙</span>
-            </button>
+            <div class="header-left">
+                <h1 class="header-title">🐱 NsureCat</h1>
+                <span class="header-tagline">¡Rebélate contra el seguro tradicional!</span>
+            </div>
+            <div class="header-right">
+                <button class="language-toggle" id="language-toggle" aria-label="Toggle language">
+                    <span data-lang="en" class="active">EN</span> / <span data-lang="es">ES</span>
+                </button>
+                <button
+                    id="theme-toggle"
+                    class="theme-toggle-btn"
+                    aria-label="Toggle theme"
+                    data-testid="theme-toggle-button">
+                    <span class="theme-icon" id="theme-icon">🌙</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -35,48 +43,48 @@
     </main>
 
     <!-- Footer Input Area -->
-    <footer class="footer-input" role="contentinfo">
+    <footer class="footer-input-area" role="contentinfo">
         <div class="input-container">
             <!-- Text Input -->
-            <div class="text-input-wrapper">
-                <input 
-                    type="text" 
-                    id="user-input" 
-                    class="user-input" 
-                    placeholder="Type your message..."
-                    aria-label="Message input"
-                    data-testid="user-input">
-                <button 
-                    id="send-btn" 
-                    class="send-btn" 
-                    aria-label="Send message"
-                    data-testid="send-button">
-                    Send
-                </button>
-            </div>
+            <input
+                type="text"
+                id="user-input"
+                class="user-input"
+                placeholder="Type your message..."
+                aria-label="Message input"
+                data-testid="user-input">
 
             <!-- Voice Button -->
-            <button 
-                id="voice-btn" 
-                class="voice-btn" 
+            <button
+                id="voice-btn"
+                class="voice-btn"
                 aria-label="Use voice input"
                 data-testid="voice-button">
                 🎤
+            </button>
+
+            <!-- Send Button -->
+            <button
+                id="send-btn"
+                class="send-btn"
+                aria-label="Send message"
+                data-testid="send-button">
+                <span class="btn-gradient-text">Send</span>
             </button>
         </div>
     </footer>
 
     <!-- Policy Form Modal (Hidden by default) -->
-    <div id="policy-form-modal" class="modal" style="display: none;" role="dialog" aria-labelledby="form-modal-title">
-        <div class="modal-content">
+    <div id="policy-form-modal" class="modal-overlay" style="display: none;" role="dialog" aria-labelledby="form-modal-title">
+        <div class="modal">
             <div class="modal-header">
-                <h2 id="form-modal-title">Enter Your Policy Details</h2>
+                <h2 id="form-modal-title" class="modal-title">Enter Your Policy Details</h2>
                 <button class="modal-close" id="close-form-modal" aria-label="Close form">&times;</button>
             </div>
-            <form id="policy-form" class="policy-form">
+            <form id="policy-form" class="modal-body policy-form">
                 <div class="form-group">
-                    <label for="state">State:</label>
-                    <select id="state" name="state" required>
+                    <label for="state" class="form-label">State:</label>
+                    <select id="state" name="state" class="form-select" required>
                         <option value="">Select State</option>
                         <option value="NJ">New Jersey</option>
                         <option value="NY">New York</option>
@@ -87,8 +95,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="carrier">Current Carrier:</label>
-                    <select id="carrier" name="carrier" required>
+                    <label for="carrier" class="form-label">Current Carrier:</label>
+                    <select id="carrier" name="carrier" class="form-select" required>
                         <option value="">Select Carrier</option>
                         <option value="Geico">Geico</option>
                         <option value="Progressive">Progressive</option>
@@ -99,13 +107,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="amount">Amount (6 months):</label>
-                    <input type="number" id="amount" name="amount" placeholder="e.g., 975" required>
+                    <label for="amount" class="form-label">Amount (6 months):</label>
+                    <input type="number" id="amount" name="amount" class="form-input" placeholder="e.g., 975" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="bodily_injury">Bodily Injury:</label>
-                    <select id="bodily_injury" name="bodily_injury" required>
+                    <label for="bodily_injury" class="form-label">Bodily Injury:</label>
+                    <select id="bodily_injury" name="bodily_injury" class="form-select" required>
                         <option value="">Select Coverage</option>
                         <option value="25/50">$25,000/$50,000</option>
                         <option value="50/100">$50,000/$100,000</option>
@@ -115,8 +123,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="property_damage">Property Damage:</label>
-                    <select id="property_damage" name="property_damage" required>
+                    <label for="property_damage" class="form-label">Property Damage:</label>
+                    <select id="property_damage" name="property_damage" class="form-select" required>
                         <option value="">Select Coverage</option>
                         <option value="25000">$25,000</option>
                         <option value="50000">$50,000</option>
@@ -125,8 +133,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="uninsured_motorist">Uninsured Motorist:</label>
-                    <select id="uninsured_motorist" name="uninsured_motorist" required>
+                    <label for="uninsured_motorist" class="form-label">Uninsured Motorist:</label>
+                    <select id="uninsured_motorist" name="uninsured_motorist" class="form-select" required>
                         <option value="">Select Coverage</option>
                         <option value="25/50">$25,000/$50,000</option>
                         <option value="50/100">$50,000/$100,000</option>
@@ -135,8 +143,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="collision">Collision:</label>
-                    <select id="collision" name="collision" required>
+                    <label for="collision" class="form-label">Collision:</label>
+                    <select id="collision" name="collision" class="form-select" required>
                         <option value="">Select Deductible</option>
                         <option value="250">$250</option>
                         <option value="500">$500</option>
@@ -145,8 +153,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="comprehensive">Comprehensive:</label>
-                    <select id="comprehensive" name="comprehensive" required>
+                    <label for="comprehensive" class="form-label">Comprehensive:</label>
+                    <select id="comprehensive" name="comprehensive" class="form-select" required>
                         <option value="">Select Deductible</option>
                         <option value="250">$250</option>
                         <option value="500">$500</option>
@@ -155,8 +163,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="personal_injury_protection">Personal Injury Protection:</label>
-                    <select id="personal_injury_protection" name="personal_injury_protection" required>
+                    <label for="personal_injury_protection" class="form-label">Personal Injury Protection:</label>
+                    <select id="personal_injury_protection" name="personal_injury_protection" class="form-select" required>
                         <option value="">Select Coverage</option>
                         <option value="15000">$15,000</option>
                         <option value="50000">$50,000</option>
@@ -173,23 +181,31 @@
     </div>
 
     <!-- Wallet Connection Modal -->
-    <div id="wallet-modal" class="modal" style="display: none;" role="dialog" aria-labelledby="wallet-modal-title">
-        <div class="modal-content">
+    <div id="wallet-modal" class="modal-overlay" style="display: none;" role="dialog" aria-labelledby="wallet-modal-title">
+        <div class="modal">
             <div class="modal-header">
-                <h2 id="wallet-modal-title">Connect Your Wallet</h2>
+                <h2 id="wallet-modal-title" class="modal-title">Connect Your Wallet</h2>
                 <button class="modal-close" id="close-wallet-modal" aria-label="Close wallet modal">&times;</button>
             </div>
-            <div class="wallet-options">
-                <button class="wallet-btn" id="connect-metamask" data-testid="connect-metamask">
-                    <span class="wallet-icon">🦊</span>
-                    <span>MetaMask</span>
-                </button>
-                <button class="wallet-btn" id="connect-circle" data-testid="connect-circle">
-                    <span class="wallet-icon">⭕</span>
-                    <span>Circle</span>
-                </button>
+            <div class="modal-body">
+                <div class="wallet-options">
+                    <button class="wallet-option" id="connect-metamask" data-testid="connect-metamask">
+                        <div class="wallet-icon">🦊</div>
+                        <div class="wallet-info">
+                            <div class="wallet-name">MetaMask</div>
+                            <div class="wallet-desc">Connect with MetaMask</div>
+                        </div>
+                    </button>
+                    <button class="wallet-option" id="connect-circle" data-testid="connect-circle">
+                        <div class="wallet-icon">⭕</div>
+                        <div class="wallet-info">
+                            <div class="wallet-name">Circle</div>
+                            <div class="wallet-desc">Connect with Circle Wallet</div>
+                        </div>
+                    </button>
+                </div>
+                <div id="wallet-status" class="wallet-status"></div>
             </div>
-            <div id="wallet-status" class="wallet-status"></div>
         </div>
     </div>
 
