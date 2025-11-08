@@ -37,7 +37,7 @@ def test_process_fee_success_pending(mock_web3_class):
     mock_w3.eth.contract.return_value = mock_contract
 
     # Test
-    result = process_fee("0xUserWallet123")
+    result = process_fee("0xUserWallet123", 10000)  # 0.01 USDC
 
     assert result['status'] == 'pending'
     assert 'tx_data' in result
@@ -55,7 +55,7 @@ def test_process_fee_connection_error(mock_web3_class):
     mock_web3_class.HTTPProvider = Mock()
 
     with pytest.raises(Exception) as exc_info:
-        process_fee("0xUserWallet123")
+        process_fee("0xUserWallet123", 10000)
 
     assert "Cannot connect to Arc Testnet" in str(exc_info.value)
 
@@ -65,7 +65,7 @@ def test_process_fee_contract_not_configured():
     """Test process_fee when CONTRACT_ADDRESS not configured"""
 
     with pytest.raises(Exception) as exc_info:
-        process_fee("0xUserWallet123")
+        process_fee("0xUserWallet123", 10000)
 
     assert "CONTRACT_ADDRESS not configured" in str(exc_info.value)
 
@@ -80,7 +80,7 @@ def test_process_fee_usdc_not_configured(mock_web3_class):
     """Test process_fee when USDC_ADDRESS is placeholder"""
 
     with pytest.raises(Exception) as exc_info:
-        process_fee("0xUserWallet123")
+        process_fee("0xUserWallet123", 10000)
 
     assert "USDC_ADDRESS not configured" in str(exc_info.value)
 
@@ -108,7 +108,7 @@ def test_process_fee_contract_error(mock_web3_class):
     mock_w3.eth.contract.return_value = mock_contract
 
     with pytest.raises(Exception) as exc_info:
-        process_fee("0xUserWallet123")
+        process_fee("0xUserWallet123", 10000)
 
     assert "Payment processing failed" in str(exc_info.value)
 
@@ -128,7 +128,7 @@ def test_process_fee_validates_rpc_connection(mock_web3_class):
     mock_web3_class.HTTPProvider = Mock()
 
     with pytest.raises(Exception) as exc_info:
-        process_fee("0xUserWallet123")
+        process_fee("0xUserWallet123", 10000)
 
     assert "Cannot connect to Arc Testnet" in str(exc_info.value)
     mock_w3.is_connected.assert_called_once()
@@ -165,7 +165,7 @@ def test_process_fee_builds_transaction_correctly(mock_web3_class):
     mock_contract.functions.payFee.return_value = mock_function
     mock_w3.eth.contract.return_value = mock_contract
 
-    result = process_fee(user_wallet)
+    result = process_fee(user_wallet, 50000)  # 0.05 USDC
 
     # Verify transaction structure
     assert result['status'] == 'pending'
@@ -203,7 +203,7 @@ def test_process_fee_uses_correct_rpc_url(mock_web3_class):
     mock_contract.functions.payFee.return_value = mock_function
     mock_w3.eth.contract.return_value = mock_contract
 
-    process_fee("0xWallet")
+    process_fee("0xWallet", 10000)
 
     # Verify HTTPProvider was called with Arc Testnet RPC
     mock_web3_class.HTTPProvider.assert_called_once()

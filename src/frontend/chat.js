@@ -459,22 +459,23 @@ async function processPayment() {
         showLoading("Processing payment...");
         
         const savings = appState.selectedResult.savings_6mo;
-        const fee = savings * 0.10;
-        const netSavings = savings - fee;
+        const feeDollars = savings * 0.10; // 10% fee in dollars
+        const feeUSDC = feeDollars * 1000000; // Convert to USDC smallest units (6 decimals)
+        const netSavings = savings - feeDollars;
         
-        // Call Save API
+        // Call Save API with fee amount
         const response = await fetch(`${API_BASE_URL}/v1/save`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                wallet_address: appState.walletAddress
+                wallet_address: appState.walletAddress,
+                fee_amount: Math.round(feeUSDC) // Round to nearest whole number
             })
         });
         
         hideLoading();
-        closeWalletModal();
         
         if (!response.ok) {
             throw new Error(`Save API error: ${response.status}`);
@@ -482,7 +483,12 @@ async function processPayment() {
         
         const data = await response.json();
         
-        if (data.status === 'success') {
+        if (data.status === 'pending' && data.tx_data) {
+            // Handle transaction signing
+            await handleTransactionSigning(data.tx_data, netSavings);
+        } else if (data.status === 'success') {
+            // Fallback for direct backend signing
+            closeWalletModal();
             addCatMessage(`Perfect! Payment processed. You have saved $${netSavings.toFixed(2)} (90% of savings). Welcome to ${appState.selectedResult.new_carrier}!`, true);
         }
         
@@ -492,6 +498,99 @@ async function processPayment() {
         showError('Payment failed. Please try again.');
         addCatMessage("Oops, payment failed. Please try again.", true);
     }
+}
+
+async function handleTransactionSigning(txData, netSavings) {
+    try {
+        // First, approve USDC spending
+        const feeAmount = Math.round(netSavings * 1000000 * 0.1); // 10% fee in USDC units
+        await approveUSDCSpending(txData.from, txData.to, feeAmount);
+        
+        showLoading("Please sign the payment transaction in MetaMask...");
+        
+        // Then send the payFee transaction
+        const txHash = await window.ethereum.request({
+            method: 'eth_sendTransaction',
+            params: [txData],
+        });
+        
+        showLoading("Waiting for transaction confirmation...");
+        
+        // Wait for transaction confirmation
+        await waitForTransaction(txHash);
+        
+        hideLoading();
+        closeWalletModal();
+        
+        addCatMessage(`Perfect! Payment processed. Transaction: ${txHash.substring(0, 10)}... You have saved $${netSavings.toFixed(2)} (90% of savings). Welcome to ${appState.selectedResult.new_carrier}!`, true);
+        
+    } catch (error) {
+        hideLoading();
+        console.error('Transaction signing error:', error);
+        if (error.code === 4001) {
+            // User rejected transaction
+            showError('Transaction cancelled by user.');
+            addCatMessage("Transaction cancelled. You can try again anytime.", true);
+        } else {
+            showError('Transaction failed. Please try again.');
+            addCatMessage("Oops, transaction failed. Please try again.", true);
+        }
+    }
+}
+
+async function approveUSDCSpending(userAddress, contractAddress, amount) {
+    // USDC contract address on Arc Testnet (placeholder - needs to be updated)
+    const USDC_ADDRESS = '0x...'; // TODO: Get real USDC address
+    
+    showLoading("Please approve USDC spending in MetaMask...");
+    
+    // Encode approve function call: approve(address,uint256)
+    const spender = contractAddress.replace('0x', '').padStart(64, '0');
+    const approveAmount = amount.toString(16).padStart(64, '0');
+    const data = `0x095ea7b3${spender}${approveAmount}`;
+    
+    const approveTx = {
+        to: USDC_ADDRESS,
+        from: userAddress,
+        data: data,
+        gas: '100000'
+    };
+    
+    const approveTxHash = await window.ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [approveTx],
+    });
+    
+    showLoading("Waiting for approval confirmation...");
+    await waitForTransaction(approveTxHash);
+}
+
+async function waitForTransaction(txHash) {
+    return new Promise((resolve, reject) => {
+        const checkReceipt = async () => {
+            try {
+                const receipt = await window.ethereum.request({
+                    method: 'eth_getTransactionReceipt',
+                    params: [txHash],
+                });
+                
+                if (receipt) {
+                    if (receipt.status === '0x1') {
+                        resolve(receipt);
+                    } else {
+                        reject(new Error('Transaction failed'));
+                    }
+                } else {
+                    // Keep checking
+                    setTimeout(checkReceipt, 2000);
+                }
+            } catch (error) {
+                reject(error);
+            }
+        };
+        
+        checkReceipt();
+    });
 }
 
 // ============= Voice Functions =============

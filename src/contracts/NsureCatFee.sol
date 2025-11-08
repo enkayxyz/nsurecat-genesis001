@@ -8,14 +8,13 @@ interface IERC20 {
 contract NsureCatFee {
     address public treasury;
     address public usdcToken;
-    uint256 public feeAmount = 10000;  // 0.01 USDC (assuming 6 decimals)
 
     constructor(address _treasury, address _usdcToken) {
         treasury = _treasury;
         usdcToken = _usdcToken;
     }
 
-    function payFee() external {
-        IERC20(usdcToken).transferFrom(msg.sender, treasury, feeAmount);
+    function payFee(uint256 amount) external {
+        IERC20(usdcToken).transferFrom(msg.sender, treasury, amount);
     }
 }
